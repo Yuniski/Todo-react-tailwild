@@ -24,9 +24,8 @@ function App() {
       </header>
 
       <main className="container mx-auto px-4 mt-8">
-        <div className="bg-white rounded-md">
-          
-          <article className="flex gap-4 py-4 px-4 border-b border-b-gray-400">
+        <div className="bg-white rounded-md [&>article]:p-4">
+          <article className="flex gap-4 border-b border-b-gray-400">
             <button className=" flex-none rounded-full border-2 w-5 h-5 inline-block"></button>
             <p className="text-gray-600 grow">Complete online Javascript</p>
             <button className="flex-none">
@@ -34,7 +33,7 @@ function App() {
             </button>
           </article>
           
-          <article className="flex gap-4 py-4 px-4 border-b border-b-gray-400">
+          <article className="flex gap-4 border-b border-b-gray-400">
             <button className=" flex-none rounded-full border-2 w-5 h-5 inline-block"></button>
             <p className="text-gray-600 grow">Complete online Javascript</p>
             <button className="flex-none">
@@ -42,7 +41,7 @@ function App() {
             </button>
           </article>
           
-          <article className="flex gap-4 py-4 px-4 border-b border-b-gray-400">
+          <article className="flex gap-4 border-b border-b-gray-400">
             <button className=" flex-none rounded-full border-2 w-5 h-5 inline-block"></button>
             <p className="text-gray-600 grow">Complete online Javascript</p>
             <button className="flex-none">

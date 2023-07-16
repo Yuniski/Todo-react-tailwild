@@ -8,7 +8,7 @@ import TodoList from "../components/TodoList";
 const initialStateTodos = [
   { id: 1, title: "Go to the gym", completed: true },
   { id: 2, title: "Completed online curse of React", completed: false },
-  { id: 3, title: "10 min to meditation", completed: true },
+  { id: 3, title: "10 min to meditation", completed: false },
   { id: 4, title: "Pick up groceries", completed: false },
   { id: 5, title: "Play music in the house", completed: false },
 ];
@@ -38,25 +38,50 @@ function App() {
     );
   };
 
+  const computedItemsLeft = todos.filter((todo) => !todo.completed).length;
+
+  const clearCompleted = () => {
+    setTodos(todos.filter ((todo) => !todo.completed));
+  };
+
+  const [filter, setFilter] = useState("all");
+
+  const changeFilter = (filter) => setFilter(filter)
+
+  const filteredTodos = () => {
+    switch (filter) {
+      case "all":
+        return todos;
+      case "active":
+        return todos.filter((todo) => !todo.completed);
+      case "completed":
+        return todos.filter ((todo) => todo.completed);
+        default:
+          return todos;
+    }
+  }
+
   return (
     <div
-      className="bg-[url('./assets/images/bg-mobile-light.jpg')] 
-    bg-no-repeat bg-contain bg-gray-300 min-h-screen"
+      className="bg-[url('./assets/images/bg-mobile-light.jpg')] transition-all duration-1000 bg-no-repeat bg-contain bg-gray-300 min-h-screen md:bg-[url('./assets/images/bg-desktop-light.jpg')] "
     >
       <Header />
 
-      <main className="container mx-auto px-4 mt-8">
+      <main className="container mx-auto px-4 mt-8 md:max-w-xl">
         <TodoCreate createTodo={createTodo} />
         <TodoList
-          todos={todos}
+          todos={filteredTodos()}
           removeTodo={removeTodo}
           updateTodo={updateTodo}
         />
-        <TodoComputed />
-        <TodoFilter />
+        <TodoComputed 
+        computedItemsLeft={computedItemsLeft}
+        clearCompleted={clearCompleted}
+        />
+        <TodoFilter changeFilter={changeFilter} filter={filter}/>
       </main>
 
-      <p className="text-center mt-8">Drag and drop to reorder list</p>
+      <p className="text-center mt-8">Code with ❤ by 🐻</p>
     </div>
   );
 }

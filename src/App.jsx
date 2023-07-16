@@ -1,10 +1,31 @@
+import { useState } from "react";
 import Header from "../components/Header"
 import TodoComputed from "../components/TodoComputed";
 import TodoCreate from "../components/TodoCreate";
 import TodoFilter from "../components/TodoFilter";
 import TodoList from "../components/TodoList";
 
+const initialStateTodos =[
+  { id:1, title:"Go to the gym", completed:true},
+  { id:2, title:"Completed online curse of React", completed:false},
+  { id:3, title:"10 min to meditation", completed:false},
+  { id:4, title:"Pick up groceries", completed:false},
+  { id:5, title:"Play music in the house", completed:false},
+];
+
 function App() {
+  const [todos, setTodos] = useState(initialStateTodos);
+
+  const createTodo = (title) => {
+    const newTodo = {
+      id: Date.now(),
+      title,
+      completed: false,
+    }
+
+    setTodos([...todos, newTodo]);
+  }
+
   return (
     <div
     className="bg-[url('./assets/images/bg-mobile-light.jpg')] 
@@ -13,12 +34,11 @@ function App() {
     <Header />
 
       <main className="container mx-auto px-4 mt-8">
-        <TodoCreate />
-        <TodoList />
+        <TodoCreate createTodo={createTodo} />
+        <TodoList todos={todos}/>
         <TodoComputed />
+        <TodoFilter />
       </main>
-
-      <TodoFilter />
 
       <p className="text-center mt-8">Drag and drop to reorder list</p>
     </div>

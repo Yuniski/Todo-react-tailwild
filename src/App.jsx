@@ -63,7 +63,7 @@ function App() {
 
   return (
     <div
-      className="bg-[url('assets/images/bg-mobile-light.jpg')] transition-all duration-1000 bg-no-repeat bg-contain bg-gray-300 min-h-screen md:bg-[url('assets/images/bg-desktop-light.jpg')] "
+      className="`bg-[url(['images/bg-mobile-light.jpg'])] transition-all duration-1000 bg-no-repeat bg-contain bg-gray-300 min-h-screen md:bg-[url('images/bg-desktop-light.jpg')]"
     >
       <Header />
 

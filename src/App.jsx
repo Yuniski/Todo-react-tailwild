@@ -5,6 +5,7 @@ import TodoCreate from "../components/TodoCreate";
 import TodoFilter from "../components/TodoFilter";
 import TodoList from "../components/TodoList";
 
+
 const initialStateTodos = [
   { id: 1, title: "Go to the gym", completed: true },
   { id: 2, title: "Completed online curse of React", completed: false },
@@ -41,12 +42,12 @@ function App() {
   const computedItemsLeft = todos.filter((todo) => !todo.completed).length;
 
   const clearCompleted = () => {
-    setTodos(todos.filter ((todo) => !todo.completed));
+    setTodos(todos.filter((todo) => !todo.completed));
   };
 
   const [filter, setFilter] = useState("all");
 
-  const changeFilter = (filter) => setFilter(filter)
+  const changeFilter = (filter) => setFilter(filter);
 
   const filteredTodos = () => {
     switch (filter) {
@@ -55,16 +56,14 @@ function App() {
       case "active":
         return todos.filter((todo) => !todo.completed);
       case "completed":
-        return todos.filter ((todo) => todo.completed);
-        default:
-          return todos;
+        return todos.filter((todo) => todo.completed);
+      default:
+        return todos;
     }
-  }
+  };
 
   return (
-    <div
-      className="bg-[url('assets/images/bg-mobile-light.jpg')] transition-all duration-1000 bg-no-repeat bg-contain bg-gray-300 min-h-screen md:bg-[url('assets/images/bg-desktop-light.jpg')]"
-    >
+    <div className="bg-[url('assets/images/bg-mobile-light.jpg')] transition-all duration-1000 bg-no-repeat bg-contain bg-gray-300 min-h-screen md:bg-[url('assets/images/bg-desktop-light.jpg')] dark:bg-gray-900 dark:bg-[url('assets/images/bg-mobile-dark.jpg')] ">
       <Header />
 
       <main className="container mx-auto px-4 mt-8 md:max-w-xl">
@@ -74,14 +73,14 @@ function App() {
           removeTodo={removeTodo}
           updateTodo={updateTodo}
         />
-        <TodoComputed 
-        computedItemsLeft={computedItemsLeft}
-        clearCompleted={clearCompleted}
+        <TodoComputed
+          computedItemsLeft={computedItemsLeft}
+          clearCompleted={clearCompleted}
         />
-        <TodoFilter changeFilter={changeFilter} filter={filter}/>
+        <TodoFilter changeFilter={changeFilter} filter={filter} />
       </main>
 
-      <p className="text-center mt-8">Code with ❤ by 🐻</p>
+      <p className="text-center mt-8 dark:text-gray-400">Code with ❤ by 🐻</p>
     </div>
   );
 }

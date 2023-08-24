@@ -5,15 +5,9 @@ import TodoCreate from "../components/TodoCreate";
 import TodoFilter from "../components/TodoFilter";
 import TodoList from "../components/TodoList";
 
-// const initialStateTodos = [
-//   { id: 1, title: "Go to the gym", completed: true },
-//   { id: 2, title: "Completed online curse of React", completed: false },
-//   { id: 3, title: "10 min to meditation", completed: false },
-//   { id: 4, title: "Pick up groceries", completed: false },
-//   { id: 5, title: "Play music in the house", completed: false },
-// ];
-
-const initialStateTodos = JSON.parse(localStorage.getItem("todos")) || [];
+const initialStateTodos = JSON.parse(localStorage.getItem("todos")) || [
+  { id: 1, title: "My first ToDo", completed: false }
+];
 
 function App() {
   const [todos, setTodos] = useState(initialStateTodos);

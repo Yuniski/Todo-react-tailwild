@@ -19,6 +19,8 @@ const Header = () => {
     }
   }, [darkMode])
 
+  const [tooltipVisible, setTooltipVisible] = useState(false);
+
   return (
     <header className="container mx-auto px-4 pt-8 md:max-w-xl">
       <div className="flex justify-between">
@@ -26,12 +28,21 @@ const Header = () => {
           Todo
         </h1>
         <div className="flex justify-between">
-          <button className="mx-5">
+          <button 
+            className="mx-5"
+            onMouseEnter={() => setTooltipVisible(!tooltipVisible)}
+            onMouseLeave={() => setTooltipVisible(!tooltipVisible)}
+          >
             <HelpIcon />
           </button>
           <button onClick={() => setDarkMode(!darkMode)}>
             {darkMode ? <IconSun /> : <MoonIcon />}
           </button>
+        </div>
+      </div>
+      <div className={`tooltip ${tooltipVisible ? '' : 'hidden'}`}>
+        <div className="bg-white">
+          <p>Hola!</p>
         </div>
       </div>
     </header>    

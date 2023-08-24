@@ -40,9 +40,10 @@ const Header = () => {
           </button>
         </div>
       </div>
-      <div className={`tooltip ${tooltipVisible ? '' : 'hidden'}`}>
-        <div className="bg-white">
-          <p>Hola!</p>
+      {/* <div className=> */}
+      <div className={`flex justify-end tooltip ${tooltipVisible ? '' : 'hidden'}`}>
+        <div className="bg-gray-100 rounded-md text-xs tracking-wide w-40 h-32 p-2 fixed mt-1 shadow-lg dark:bg-gray-700 transition-all duration-1000 dark:text-white ">
+          <p>You can make new tasks in 'Create a New To Do.' All your tasks will stay on the list, and you can finish or remove them whenever you want. Enjoy!</p>
         </div>
       </div>
     </header>    

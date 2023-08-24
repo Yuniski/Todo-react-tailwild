@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import MoonIcon from "./icons/MoonIcon";
 import IconSun from "./icons/IconSun";
-
+import HelpIcon from "./icons/HelpIcon";
 
 const initialStateDarkMode = localStorage.getItem('theme') === 'dark';
 
@@ -25,9 +25,14 @@ const Header = () => {
         <h1 className="uppercase text-white text-3xl font-semibold tracking-[0.3em]">
           Todo
         </h1>
-        <button onClick={() => setDarkMode(!darkMode)}>
-          {darkMode ? <IconSun /> : <MoonIcon />}
-        </button>
+        <div className="flex justify-between">
+          <button className="mx-5">
+            <HelpIcon />
+          </button>
+          <button onClick={() => setDarkMode(!darkMode)}>
+            {darkMode ? <IconSun /> : <MoonIcon />}
+          </button>
+        </div>
       </div>
     </header>    
   )
